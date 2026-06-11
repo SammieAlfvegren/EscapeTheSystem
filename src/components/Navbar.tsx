@@ -35,19 +35,18 @@ function Navbar() {
     <nav className="navbar">
       <h2 className="navbar-title">Escape The System</h2>
       <Link to="/" className='nav-link'>Home</Link>
-      startsida
       {roomsData.map((room) => (
         <Link key={room.roomPath} to={`/room/${room.roomPath}`} className='nav-link'>
           {room.roomName}
         </Link>
       ))}
     
-      <div className="inventory-display">
+      {/* <div className="inventory-display">
         <p>inventory</p>
         <span className='inventory-items'>
           {inventory.map(item => item.item).join(', ')}
-        </span>
-      </div>
+        </span> */}
+      {/* </div> */}
     </nav>
   );
 }
