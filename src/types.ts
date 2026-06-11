@@ -3,6 +3,7 @@ export interface Item {
   item: string;
   description: string;
   image: string;
+  name: string;
 }
 
 export interface RoomData {
