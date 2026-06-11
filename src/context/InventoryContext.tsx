@@ -7,32 +7,36 @@ const itemsData = itemsDataRaw as Item[];
 interface InventoryContextType {
   inventory: Item[];
   addToInventory: (newItem: Item) => void;
+  selectedItemId: number | null;
+  selectItem: (id: number) => void;
 }
 
 const InventoryContext = createContext<InventoryContextType | undefined>(undefined);
 
 export function InventoryProvider({ children }: { children: ReactNode }) {
-  //starta med UV Lampa
+
   const startingItem = itemsData.find(item => item.id === 1);
-  
-  // State för ryggsäcken.
   const [inventory, setInventory] = useState<Item[]>(startingItem ? [startingItem] : []);
+  const [selectedItemId, setSelectedItemId] = useState<number | null>(null);
 
   const addToInventory = (newItem: Item) => {
-    // Förhindra dubbletter i ryggsäcken
     if (!inventory.some(item => item.id === newItem.id)) {
       setInventory([...inventory, newItem]);
     }
   };
 
+  const selectItem = (id: number) => {
+
+    setSelectedItemId(prevId => prevId === id ? null : id);
+  };
+
   return (
-    <InventoryContext.Provider value={{ inventory, addToInventory }}>
+    <InventoryContext.Provider value={{ inventory, addToInventory, selectedItemId, selectItem }}>
       {children}
     </InventoryContext.Provider>
   );
 }
 
-// hook för att använda ryggsäcken i andra komponenter
 export function useInventory() {
   const context = useContext(InventoryContext);
   if (!context) {

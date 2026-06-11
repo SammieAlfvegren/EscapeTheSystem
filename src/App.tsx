@@ -4,23 +4,34 @@ import Navbar from "./components/Navbar";
 import Room from "./components/Room";
 import Home from "./components/Home";
 import Inventory from "./components/Inventory";
-import { BrowserRouter as Router, Routes, BrowserRouter, Route,  } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
+function AppContent() {
+  const location = useLocation();
+
+  return (
+    <>
+      <Navbar />
+      
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/room/:roomPath" element={<Room />} />
+        </Routes>
+
+        {location.pathname !== "/" && <Inventory />}
+      </main>
+    </>
+  );
+}
 
 function App() {
-  return(
+  return (
     <InventoryProvider>
       <BrowserRouter>
-      {/* dynamisk navbar och ryggsäck som visas i alla rum*/}
-      <Navbar />
-      <Inventory />
-      <Routes>
-        {/*startsida */}
-        <Route path="/" element={<Home />} />
-        <Route path="/room/:roomPath" element={<Room />} />
-      </Routes>
+        <AppContent />
       </BrowserRouter>
-      </InventoryProvider>
+    </InventoryProvider>
   );
 }
 
