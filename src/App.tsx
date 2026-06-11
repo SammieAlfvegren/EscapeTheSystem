@@ -3,6 +3,7 @@ import { InventoryProvider } from "./context/InventoryContext";
 import Navbar from "./components/Navbar";
 import Room from "./components/Room";
 import Home from "./components/Home";
+import Inventory from "./components/Inventory";
 import { BrowserRouter as Router, Routes, BrowserRouter, Route,  } from "react-router-dom";
 
 
@@ -12,6 +13,7 @@ function App() {
       <BrowserRouter>
       {/* dynamisk navbar och ryggsäck som visas i alla rum*/}
       <Navbar />
+      <Inventory />
       <Routes>
         {/*startsida */}
         <Route path="/" element={<Home />} />
