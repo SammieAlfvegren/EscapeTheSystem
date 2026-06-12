@@ -73,7 +73,6 @@ function Room() {
  return (
   <main className="bg-zinc-950 text-zinc-100 px-4 py-4">
     <div className="max-w-5xl mx-auto">
-
       <div className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 shadow-2xl">
 
         {/* Header */}
@@ -91,13 +90,11 @@ function Room() {
 
         {/* Content */}
         <div className="p-6">
-
           <p className="text-zinc-300 leading-relaxed">
             {roomIsSolved
               ? room.solvedInstruction
               : room.unsolvedInstruction}
           </p>
-
           {!roomIsSolved && (
             <div className="mt-4 rounded-xl border border-cyan-500/30 bg-cyan-500/10 p-4">
               <p className="text-sm text-cyan-300">
@@ -105,7 +102,6 @@ function Room() {
               </p>
             </div>
           )}
-
           {feedbackMessage && !roomIsSolved && (
             <div className="mt-4 rounded-xl border border-red-500/30 bg-red-500/10 p-4">
               <p className="text-red-300">
@@ -113,9 +109,7 @@ function Room() {
               </p>
             </div>
           )}
-
           <div className="mt-6">
-
             {!roomIsSolved ? (
               <button
                 onClick={handleSolveRoom}
@@ -145,20 +139,14 @@ function Room() {
                     Freedom! You escaped Project NEXUS.
                   </h2>
                 )}
-
               </div>
             )}
-
           </div>
-
         </div>
-
       </div>
-
     </div>
   </main>
 );
-
 }
 
 export default Room;

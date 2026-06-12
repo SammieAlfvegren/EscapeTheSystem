@@ -16,15 +16,10 @@ function App() {
   return (
     <InventoryProvider>
       <BrowserRouter>
-
         <div className="min-h-screen bg-zinc-950 text-zinc-100">
-
           <Navbar />
-
           <div className="flex h-[calc(100vh-73px)]">
-
             <Inventory />
-
             <main className="flex-1 overflow-y-auto">
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -34,11 +29,8 @@ function App() {
                 />
               </Routes>
             </main>
-
           </div>
-
         </div>
-
       </BrowserRouter>
     </InventoryProvider>
   );
