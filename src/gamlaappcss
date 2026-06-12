@@ -1,0 +1,218 @@
+
+/*
+
+/* --- Global layout: Låser skärmen så man slipper scrolla --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #121214;
+  color: #e1e1e6;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 15px;
+  gap: 15px;
+}
+
+/* --- Navbar (Toppmenyn) --- */
+nav {
+  display: flex;
+  gap: 10px;
+  background-color: #202024;
+  padding: 10px;
+  border-radius: 6px;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+nav a {
+  color: #a8a8b3;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+nav a:hover {
+  background-color: #29292e;
+  color: #fff;
+}
+
+/* --- Kolumn-layout --- */
+main {
+  display: flex;
+  flex: 1;
+  gap: 15px;
+  min-height: 0; 
+}
+
+/* VÄNSTER SIDA: Spelbanan / Rummen */
+.room-container, .home-container {
+  flex: 2.5; /* Justerad bredd för att ge plats åt större bilder */
+  background-color: #202024;
+  padding: 20px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  min-height: 0;
+}
+
+/* HÖGER SIDA: Inventory */
+.inventory-container {
+  flex: 1; 
+  background-color: #202024;
+  padding: 20px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* --- Anpassad styling för scrollistan (Webkit: Chrome, Safari, Edge) --- */
+.inventory-grid::-webkit-scrollbar {
+  width: 8px; /* Gör scrollistan lite smalare och diskretare */
+}
+
+/* Bakgrunden på själva spåret */
+.inventory-grid::-webkit-scrollbar-track {
+  background: #121214; 
+  border-radius: 4px;
+}
+
+/* Själva "balken" man drar i */
+.inventory-grid::-webkit-scrollbar-thumb {
+  background: #29292e; 
+  border-radius: 4px;
+  border: 1px solid #202024; /* Ger lite distans till spåret */
+}
+
+/* När man håller musen över balken */
+.inventory-grid::-webkit-scrollbar-thumb:hover {
+  background: #04d361; /* Blinkar till i grönt när man hovrar, matchar temat! */
+}
+
+/* --- Anpassad styling för Firefox --- */
+.inventory-grid {
+  scrollbar-width: thin; /* Gör den smal */
+  scrollbar-color: #29292e #121214; /* Balkfärg följt av spårfärg */
+}
+
+/* --- Detaljer för Rummet (Vänster) --- */
+.room-container h1 {
+  font-size: 1.6rem;
+}
+
+.room-image {
+  max-height: 58vh; /* ÖKAD: Gjorde rumbilden märkbart större (från 50vh) */
+  width: auto;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.room-instruction {
+  text-align: center;
+  max-width: 600px;
+  font-size: 0.95rem;
+  color: #c4c4cc;
+}
+
+/* --- Detaljer för Inventory (Höger) --- */
+.inventory-container h2 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #04d361;
+  border-bottom: 1px solid #29292e;
+  padding-bottom: 5px;
+}
+
+.inventory-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto; 
+  flex: 1;
+}
+
+.inventory-item {
+  background-color: #29292e;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  padding: 15px; /* ÖKAD: Mer luft runt föremålet */
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.9rem; /* ÖKAD: Lite större text */
+}
+
+.inventory-item h4 {
+  margin-bottom: 5px;
+}
+
+.inventory-item img {
+  display: block;
+  margin: 10px auto;
+  max-height: 100px; /* ÖKAD: Gjorde själva itembilden mycket större (från 50px) */
+  width: auto;
+  object-fit: contain;
+}
+
+/* När ett föremål är markerat */
+.inventory-item.selected {
+  border-color: #04d361;
+  background-color: #1d3b2b;
+}
+
+/* --- Felmeddelanden och Knappar --- */
+.ui-feedback-prompt {
+  background-color: #f75a6820;
+  color: #f75a68;
+  border: 1px solid #f75a68;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.solved-badge {
+  color: #04d361;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.btn-solve {
+  background-color: #04d361;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-solve:hover {
+  background-color: #00b34d;
+}
+
+/* --- Startsidan --- */
+.home-container h1 {
+  font-size: 4rem;
+  color: #04d361;
+}
+
+.home-container p {
+  max-width: 800px;
+  color: #c4c4cc;
+  line-height: 1.4;
+}
