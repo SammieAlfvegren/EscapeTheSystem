@@ -75,20 +75,17 @@ function Room() {
     <div className="max-w-5xl mx-auto">
       <div className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 shadow-2xl">
 
-        {/* Header */}
         <div className="border-b border-zinc-800 px-6 py-4">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
             {room.roomName}
           </h1>
         </div>
 
-        {/* Image */}
         <img
         src={roomIsSolved ? room.solvedImage : room.unsolvedImage}
         alt={room.roomName}
         className="w-full max-h-[280px] object-contain"/>
 
-        {/* Content */}
         <div className="p-6">
           <p className="text-zinc-300 leading-relaxed">
             {roomIsSolved

@@ -5,7 +5,7 @@ function Home() {
         <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-3">
           AI Research Facility
         </p>
-        <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+        <h1 className="text-5xl font-bold mb-6 pb-2 leading-tight bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
           Project NEXUS
         </h1>
         <p className="text-lg text-zinc-300 leading-relaxed mb-6">
