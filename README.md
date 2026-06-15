@@ -1,1 +1,9 @@
-Öppna UPPGIFT.md och börja.
+# Escape the System
+
+## Starta projektet
+
+```bash
+npm install
+npm run dev
+```
+
