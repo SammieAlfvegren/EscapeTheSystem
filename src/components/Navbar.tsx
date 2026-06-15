@@ -1,30 +1,7 @@
-// import {Link} from 'react-router-dom';
-// import roomsDataRaw from '../data/rooms.json';
-// import {useInventory} from '../context/InventoryContext';
-// import { RoomData } from '../types';
-// // import Room from './Room';
-
-// const roomsData = RoomsDataRaw as RoomData[];
-
-// function Navbar() {
-//   const { inventory } = useInventory();
-
-//   return (
-//     <nav className="navbar">
-//       <h2>Escape The System</h2>
-//       <Link to = "/">Home</Link>
-//       roomsData.map(room => (
-//         <Link key={room.roomPath} to={`/room/${room.id}`}>{room.name}</Link>
-//       ))
-//     </nav>
-//   )
-
-// }'
-
-import { Link } from 'react-router-dom';
-import RoomsDataRaw from '../data/rooms.json';
-import { useInventory } from '../context/InventoryContext';
-import type { RoomData } from '../types';
+import { Link } from "react-router-dom";
+import RoomsDataRaw from "../data/rooms.json";
+import { useInventory } from "../context/InventoryContext";
+import type { RoomData } from "../types";
 
 const roomsData = RoomsDataRaw as RoomData[];
 
@@ -32,25 +9,33 @@ function Navbar() {
   const { inventory } = useInventory();
 
   return (
-    <nav className="navbar">
-      <h2 className="navbar-title">Escape The System</h2>
-      <Link to="/" className='nav-link'>Home</Link>
-      {roomsData.map((room) => (
-        <Link key={room.roomPath} to={`/room/${room.roomPath}`} className='nav-link'>
-          {room.roomName}
+    <nav className="h-[73px] bg-zinc-900 border-b border-zinc-800 px-6">
+      <div className="max-w-7xl mx-auto h-full flex items-center gap-6">
+        <h2 className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+          Escape The System
+        </h2>
+        <Link
+          to="/"
+          className="text-zinc-300 hover:text-cyan-400">Home
         </Link>
-      ))}
-    
-      {/* <div className="inventory-display">
-        <p>inventory</p>
-        <span className='inventory-items'>
-          {inventory.map(item => item.item).join(', ')}
-        </span> */}
-      {/* </div> */}
+        {roomsData.map((room) => (
+          <Link
+            key={room.roomPath}
+            to={`/room/${room.roomPath}`}
+            className="text-zinc-300 hover:text-cyan-400"
+          >
+            {room.roomName}
+          </Link>
+        ))}
+        <div className="ml-auto text-zinc-400">
+          Items:
+          <span className="ml-2 text-cyan-400 font-bold">
+            {inventory.length}
+          </span>
+        </div>
+      </div>
     </nav>
   );
 }
-
-
 
 export default Navbar;
